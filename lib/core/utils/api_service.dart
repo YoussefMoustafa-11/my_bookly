@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 class ApiService {
   final Dio _dio;
-  final String baseUrl = 'https://www.googleapis.com/books/v1/volumes';
+  final String baseUrl = 'https://www.googleapis.com/books/v1/volumes/';
   const ApiService(this._dio);
 
   Future get({required String endpoint, String? query}) async {

@@ -46,7 +46,11 @@ class VolumeInfo extends Equatable {
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
     title: json['title'] as String?,
-    authors: json['authors'] as List<String>?,
+    authors: (json['authors'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    //  resolve the type of authors from List<dynamic> to List<String> in anther way because the above code cause an error in the test file and i can't run the test file
+    // authors: (json['authors'] as List<dynamic>?).cast<String>(),
     publishedDate: json['publishedDate'] as String?,
     industryIdentifiers: (json['industryIdentifiers'] as List<dynamic>?)
         ?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
@@ -56,7 +60,9 @@ class VolumeInfo extends Equatable {
         : ReadingModes.fromJson(json['readingModes'] as Map<String, dynamic>),
     pageCount: json['pageCount'] as int?,
     printType: json['printType'] as String?,
-    categories: json['categories'] as List<String>?,
+    categories: (json['categories'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
     maturityRating: json['maturityRating'] as String?,
     allowAnonLogging: json['allowAnonLogging'] as bool?,
     contentVersion: json['contentVersion'] as String?,

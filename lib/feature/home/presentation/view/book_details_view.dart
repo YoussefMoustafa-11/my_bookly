@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_bookly/core/utils/styles.dart';
+import 'package:my_bookly/feature/home/data/models/book_model/book_model.dart';
 
 import 'package:my_bookly/feature/home/presentation/view/widgets/books_details_section.dart';
 import 'package:my_bookly/feature/home/presentation/view/widgets/custom_book_details_app_bar.dart';
@@ -7,7 +8,9 @@ import 'package:my_bookly/feature/home/presentation/view/widgets/custom_book_det
 import 'package:my_bookly/feature/home/presentation/view/widgets/similar_books_list_view.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+  final BookModel? bookModel;
+
+  const BookDetailsView({super.key, this.bookModel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +23,15 @@ class BookDetailsView extends StatelessWidget {
           child: CustomScrollView(
             scrollBehavior: const ScrollBehavior(),
             slivers: [
-              SliverFillRemaining(
+              SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
                       child: CustomBookDetailsAppBar(),
                     ),
-                    BookDetailsSection(),
-                    Expanded(child: const SizedBox(height: 10)),
+                       BookDetailsSection(bookModel: bookModel),
+                    const SizedBox(height: 10),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(

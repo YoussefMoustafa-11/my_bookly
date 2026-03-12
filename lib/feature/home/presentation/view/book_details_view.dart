@@ -30,7 +30,7 @@ class BookDetailsView extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       child: CustomBookDetailsAppBar(),
                     ),
-                       BookDetailsSection(bookModel: bookModel),
+                    BookDetailsSection(bookModel: bookModel),
                     const SizedBox(height: 10),
                     Align(
                       alignment: Alignment.centerLeft,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_bookly/core/routing/app_routes.dart';
 import 'package:my_bookly/core/utils/assets.dart';
-import 'package:my_bookly/core/utils/routing/app_routes.dart';
 import 'package:my_bookly/feature/splash/presentation/views/widgets/sliding_text.dart';
 
 class SplashView extends StatefulWidget {
@@ -15,23 +15,6 @@ class _SplashViewState extends State<SplashView>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingTextAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    initSlidingAnimation();
-    // No need to add a listener to the animation controller when using AnimatedBuilder
-    // slidingTextAnimation.addListener(() {
-    //   setState(() {});
-    // });
-    navigateToHome();
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +39,12 @@ class _SplashViewState extends State<SplashView>
     );
   }
 
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
@@ -70,6 +59,17 @@ class _SplashViewState extends State<SplashView>
     // slidingTextAnimation.addListener(() {
     //   setState(() {});
     // });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initSlidingAnimation();
+    // No need to add a listener to the animation controller when using AnimatedBuilder
+    // slidingTextAnimation.addListener(() {
+    //   setState(() {});
+    // });
+    navigateToHome();
   }
 
   Future<Null> navigateToHome() {

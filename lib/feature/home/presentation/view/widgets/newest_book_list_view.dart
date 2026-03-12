@@ -19,16 +19,16 @@ class NewestBookListView extends StatelessWidget {
         } else if (state is NewestBooksFailure) {
           return Center(child: Text(state.errorMessage));
         } else if (state is NewestBooksSuccess) {
-          return ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            itemCount: state.books.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: BookListViewItem(bookModel: state.books[index]),
-              );
-            },
+          return Expanded(
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              itemCount: state.books.length,
+              itemBuilder: (context, index) {
+                return BookListViewItem(bookModel: state.books[index]);
+              },
+            ),
           );
         }
         return const Center(child: Text('waiting for data...'));

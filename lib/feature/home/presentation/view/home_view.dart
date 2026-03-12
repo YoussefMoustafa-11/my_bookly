@@ -12,12 +12,13 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: CustomScrollView(
           physics: BouncingScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(
               child: Column(
+                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CustomAppBar(),

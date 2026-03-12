@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_bookly/core/utils/routing/app_routes.dart';
+import 'package:my_bookly/core/routing/app_routes.dart';
 
 import '../../../../../core/utils/assets.dart';
 
